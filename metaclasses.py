@@ -101,3 +101,25 @@ try:
     network_plugin = NetworkPlugin()  # Raises TypeError
 except TypeError as e:
     print(e)  # Outputs: Class NetworkPlugin lacks required method: save
+
+"""
+    cls:
+        In __new__: Represents the metaclass itself. This is analogous to self in regular class methods, but since 
+        __new__ is creating a new class, cls refers to the metaclass.
+        In __init__: Represents the newly created class instance.
+
+    name:
+        The name of the class that is being created. It's a string representing the class name. For example, if you're
+         defining a class MyClass, the name would be "MyClass".
+
+    bases:
+        A tuple containing the base classes from which the class inherits. For instance, if your class is defined as 
+        class MyClass(Base1, Base2):, bases would be (Base1, Base2).
+
+    dct:
+        A dictionary of the class's attributes and methods. This includes any class variables, methods, and other 
+        properties. You can modify this dictionary to add, remove, or alter the class's attributes and methods before 
+        the class is created.
+
+
+"""
