@@ -14,31 +14,32 @@ Example of synchronous request
 
 """
 
-# async def get_link(query: str, current_page: int):
-#     headers = {'Authorization': config.get('PEXELS_TOKEN')}
-#     params = {'query': query, 'per_page': 1, 'page': current_page}
-#     url = 'https://api.pexels.com/v1/search'
-#
-#     async with httpx.AsyncClient() as client:
-#         response = await client.get(url, headers=headers, params=params)
-#         if response.status_code == 200:
-#             res = response.json()
-#             k = res.get('photos')[0].get('src').get('original')
-#             print(k)
-#             return k
-#
-#
-# async def search_image(query: str, count: int):
-#     current_page = 0
-#     images = await asyncio.gather(
-#         *(get_link(query, count) for count in range(current_page, count)),
-#         return_exceptions=True
-#     )
-#
-#     return images
-#
-#
-# asyncio.run(search_image('fox', 50))
+
+async def get_link(query: str, current_page: int):
+    headers = {'Authorization': config.get('PEXELS_TOKEN')}
+    params = {'query': query, 'per_page': 1, 'page': current_page}
+    url = 'https://api.pexels.com/v1/search'
+
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, headers=headers, params=params)
+        if response.status_code == 200:
+            res = response.json()
+            k = res.get('photos')[0].get('src').get('original')
+            print(k)
+            return k
+
+
+async def search_image(query: str, count: int):
+    current_page = 0
+    images = await asyncio.gather(
+        *(get_link(query, count) for count in range(current_page, count)),
+        return_exceptions=True
+    )
+
+    return images
+
+
+asyncio.run(search_image('fox', 50))
 
 # Result:
 # Time taken: 1.405679702758789 seconds

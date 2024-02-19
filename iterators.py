@@ -1,3 +1,24 @@
+"""
+
+An iterator in Python is an object that can be iterated upon, meaning that you can traverse through all the values. Technically, in Python, an iterator is an object which implements the iterator protocol, which consists of the methods __iter__() and __next__().
+Key Characteristics of Iterators:
+
+    Iterable: An object is called iterable if we can get an iterator from it. Most built-in containers in Python like lists, tuples, strings etc. are iterables.
+
+    Iteration: The process of looping through the objects or items is known as iteration.
+
+    __iter__() method: This method returns an iterator from an iterable. It is implemented by an iterable object.
+
+    __next__() method: This method returns the next item from the iterator. When there are no more items to return, it raises a StopIteration exception.
+
+How Iterators Work:
+
+    First, the __iter__() method is called on the iterable object to create an iterator.
+    Then, the __next__() method is repeatedly called on the iterator object to get each item until the StopIteration exception is raised.
+
+"""
+
+
 import time
 from memory_profiler import profile
 
